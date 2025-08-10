@@ -1,3 +1,5 @@
+// models/Modulo_Consultas/det_cita.js
+
 const {DataTypes} = require("sequelize");
 const {sequelize} = require("../../config/mysql");
 
@@ -15,6 +17,12 @@ const Det_cita =sequelize.define(
         tipo:
         {
             type: DataTypes.STRING
+        },
+        // *** CAMPO DE FECHA_CONSULTA AÑADIDO (¡IMPORTANTE!) ***
+        fecha_consulta: {
+            type: DataTypes.DATE,
+            allowNull: true, // Si permitiste nulos al crear la columna
+            defaultValue: DataTypes.NOW // Si usaste DEFAULT CURRENT_TIMESTAMP
         },
         usersid:
         {

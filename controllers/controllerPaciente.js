@@ -18,6 +18,39 @@ const getPacientes = async (req = request, res = response) => {
     }
 }
 
+// Obtener un paciente por su ID
+const getPacienteById = async (req = request, res = response) => {
+    // Extraer el ID de los parámetros de la solicitud
+    const { id } = req.params;
+    
+    try {
+        // Buscar un paciente por su clave primaria (ID) y verificar que el estado sea verdadero
+        const paciente = await Paciente.findOne({
+            where: {
+                id: id,
+                state: true
+            },
+            // Incluir el modelo de Usuario para traer los datos del usuario asociado
+            include: Usuarios
+        });
+
+        // Si se encuentra el paciente, responder con sus datos
+        if (paciente) {
+            res.json({ paciente });
+        } else {
+            // Si el paciente no se encuentra, enviar un código de estado 404
+            res.status(404).json({
+                msg: `No se encontró un paciente con el id ${id} o no está activo.`
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: 'Comuníquese con el administrador'
+        });
+    }
+}
+
 const postPaciente = async (req = request, res = response) => {
     const {nombre, apellido, fecha_nac, edad, sexo, origen, direccion, escolaridad, 
         ocupacion, estado_civil, religion, correo, telefono, usersid} = req.body;
@@ -68,6 +101,7 @@ const deletePaciente = async(req, res = response) =>{
 
 module.exports = {
     getPacientes,
+    getPacienteById,
     postPaciente,
     putPaciente,
     deletePaciente

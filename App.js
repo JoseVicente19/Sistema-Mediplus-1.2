@@ -23,6 +23,8 @@ app.use(PATH.exfisico, ROUTE.exfisico);
 app.use(PATH.finconsulta, ROUTE.finconsulta);
 app.use(PATH.mhr, ROUTE.mhr);
 app.use(PATH.detcita, ROUTE.detcita);
+app.use(PATH.reconsulta, ROUTE.reconsulta);
+
 
 app.get('*', function(req, res, next){
     return res.sendFile(path.resolve('public/index.html'));

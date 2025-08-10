@@ -10,7 +10,8 @@ const PATH = {
     exfisico: '/exfisico',
     finconsulta: '/fnconsulta',
     mhr: '/mhr',
-    detcita: '/detcita'
+    detcita: '/detcita',
+    reconsulta: '/reconsulta'
 }
 
 const ROUTE = {
@@ -24,7 +25,8 @@ const ROUTE = {
     exfisico: require('./routeExamen_fisico'),
     finconsulta: require('./routeFinConsulta'),
     mhr: require('./routeMHR'),
-    detcita: require('./routeDet_Cita')
+    detcita: require('./routeDet_Cita'),
+    reconsulta: require('./routeReconsulta')
 }
 
 module.exports = {

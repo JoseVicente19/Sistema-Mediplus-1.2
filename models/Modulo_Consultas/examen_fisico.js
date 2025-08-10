@@ -7,7 +7,7 @@ const Examen_Fisico = sequelize.define(
     {
         p_a:
         {
-            type: DataTypes.FLOAT
+            type: DataTypes.STRING
         },
         fc:
         {
@@ -39,7 +39,7 @@ const Examen_Fisico = sequelize.define(
         },
         gmt:
         {
-            type: DataTypes.FLOAT
+            type: DataTypes.STRING
         },
         comentario:
         {
